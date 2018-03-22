@@ -18,15 +18,25 @@ const HelloWorld = props => {
 HelloWorld.propTypes = {
   name: PropTypes.string.isRequired,
   colour: PropTypes.oneOf(['blue', 'red']).isRequired,
+  age: PropTypes.number
+}
+
+HelloWorld.defaultProps = {
+  name: 'Chris',
 }
 
 const bunchOfProps = {
-  name: 'Jack',
-  age: 25,
-  colour: 'green',
+  // name: 'Jack',
+  age: 25,  // doesn't trigger rebuild?
+  // age: '25', // triggers rebuild and warning
+  colour: 'blue',
 }
 
 ReactDOM.render(
   <HelloWorld {...bunchOfProps} />,
   document.getElementById('react-root')
 )
+
+// atom: react snippets
+// vscode?
+

@@ -20,6 +20,10 @@ class Count extends Component {
   }
 }
 
+Count.propTypes = {
+  count: PropTypes.number,
+}
+
 class Counter extends Component {
   constructor(props) {
     super(props)
@@ -34,6 +38,11 @@ class Counter extends Component {
     this.setState(prevState => {
       return { count1: prevState.count1 + 1 }
     })
+
+    // old way of doing it, async (not guaranteed to have updated)
+    // this.setState({
+    //   count1: this.state.count1 + 1
+    // })
   }
 
   incrementCount2() {
@@ -51,6 +60,10 @@ class Counter extends Component {
         <Count
           count={this.state.count1}
           onIncrement={this.incrementCount1.bind(this)}
+        />
+        <Count
+          count={this.state.count2}
+          onIncrement={this.incrementCount2.bind(this)}
         />
       </div>
     )

@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 import Post from './post'
 import UserInput from './input'
 
+// cutting edge!
+
 const PostOutput = ({ post }) =>
   post ? (
     <div>
@@ -43,6 +45,13 @@ class PostSearch extends Component {
           id={this.state.searchId}
           render={post => <PostOutput post={post} />}
         />
+
+        <Post // ???
+          id={this.state.searchId}
+          children={post => <PostOutput post={post} />} // ???
+        />
+
+
       </div>
     )
   }

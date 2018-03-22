@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import fetch from 'so-fetch-js'
 
+const inMemoryPosts = [] // object
+
 export default class Post extends Component {
   static propTypes = {
     id: PropTypes.number,
@@ -20,6 +22,8 @@ export default class Post extends Component {
     // remember to check if the ID prop has changed, so we don't
     // make network calls that are pointless
     if (prevProps.id !== this.props.id) {
+      // this.fetchPost(this.props.id)
+      this.fetchPost()
     }
   }
 
@@ -28,13 +32,18 @@ export default class Post extends Component {
       this.props.id
     }`
 
-    fetch(urlForPost).then(response => {
-      this.setState({ post: response.data })
-    })
+    if (inMemoryPosts[this.props.id]) { // cached
+      this.setState({post: inMemoryPosts[this.props.id]})
+    } else {
+      fetch(urlForPost).then(response => {
+        inMemoryPosts[this.props.id] = response.data // lightweight cache - could be factored into new module
+        this.setState({ post: response.data })
+      })
+    }
   }
 
   render() {
-    const { post } = this.state
+    const { post } = this.state // ???
     return (
       <div>
         {post ? (
