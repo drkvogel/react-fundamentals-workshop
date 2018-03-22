@@ -11,6 +11,8 @@ class PostSearch extends Component {
     searchId: 1,
   }
 
+  inMemoryPosts = []
+
   userInputChange = e => {
     this.setState({ userPostInput: e.target.value })
   }
@@ -21,8 +23,10 @@ class PostSearch extends Component {
     // the new post is not loaded correctly
     // can you fix the bug?
     // HINT: the problem is in post.js, not here!
-    this.setState({ searchId: Number(this.state.userPostInput) })
+    this.setState({ searchId: Number(this.state.userPostInput) }) // ???
   }
+
+  // extra TODO - how could you store previously fetched posts?
 
   render() {
     return (

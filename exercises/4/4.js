@@ -13,17 +13,18 @@ const HelloWorld = props => {
 
 const bunchOfProps = {
   name: 'Jack',
-  age: 25,
+  age: 26,
   colour: 'blue',
 }
 
 // TODO: use the spread operator to pass through all the object keys as prop
 // TODO: add another prop that customises the greeting that is used
 ReactDOM.render(
-  <HelloWorld
-    name={bunchOfProps.name}
-    age={bunchOfProps.age}
-    colour={bunchOfProps.colour}
-  />,
+  // <HelloWorld
+  //   name={bunchOfProps.name}
+  //   age={bunchOfProps.age}
+  //   colour={bunchOfProps.colour}
+  // />,
+  <HelloWorld {...bunchOfProps} />,
   document.getElementById('react-root')
 )

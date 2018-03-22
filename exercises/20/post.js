@@ -9,6 +9,8 @@ export default class Post extends Component {
     // (you can't declare this explicitly, but you can declare two props that
     // are both not required)
     children: PropTypes.func.isRequired,
+    render: PropTypes.func.isRequired,
+  
   }
 
   state = {
@@ -39,6 +41,8 @@ export default class Post extends Component {
   render() {
     // TODO: don't assume this.props.children here
     // and also see if we have this.props.render
-    return this.props.children(this.state.post)
+    const post = this.state.post
+    return this.props.children ? this.props.children(post) 
+      : this.props.render ? this.props.render(post) : null // ???
   }
 }
